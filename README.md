@@ -25,3 +25,6 @@ $ python kmeans-analysis_2_4.py
 ```
 ## 3. Hierarchical Clustering
 For all 5 questions in Question 3, run the following command to get all the results.
+```
+$ python clustering.py
+```
