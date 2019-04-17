@@ -12,7 +12,7 @@ from scipy import stats
 from scipy.stats import ttest_ind_from_stats
 import random
 import matplotlib
-#matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 np.random.seed(0)
 
@@ -27,13 +27,14 @@ embedding = pd.read_csv('digits-embedding.csv', header=None)
 # In[3]:
 
 
-os.system('mkdir figs')
+# os.system('mkdir figs')
 for i in range(10):
-    s = raw.loc[raw[1] == i].sample(n = 1, random_state = 47)
-    arr = s.drop(s.columns[[0,1]], axis=1).values
+    current = raw[raw[1] == i]
+    l = np.random.choice(len(current), 1)
+    arr = current.iloc[l].drop(current.columns[[0,1]], axis=1).values
     image = np.array(arr).reshape(28, 28)
-    #plt.imshow(image)
-    scipy.misc.imsave('./figs/' + str(i) + '.png', image)
+    plt.imshow(image)
+    scipy.misc.imsave('digit-' + str(i) + '.png', image)
 
 
 # In[4]:

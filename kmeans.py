@@ -21,8 +21,8 @@ np.random.seed(0)
 # In[2]:
 
 
-sys.argv[1] = 'digits-embedding.csv'
-sys.argv[2] = 10
+# sys.argv[1] = 'digits-embedding.csv'
+# sys.argv[2] = 10
 
 data = pd.read_csv(sys.argv[1], header=None)
 K = int(sys.argv[2])
