@@ -14,7 +14,7 @@ from scipy.stats import ttest_ind_from_stats
 from scipy.spatial import distance
 import random
 import matplotlib
-#matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 np.random.seed(0)
 # random.seed(0)
