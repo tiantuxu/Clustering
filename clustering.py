@@ -31,12 +31,10 @@ d = []
 for i in range(10):
     current = dataset[dataset[1] == i]
     l = np.random.choice(len(current), 10)
-    print len(current)
     for j in l:
         X.append([current.iloc[j][2], current.iloc[j][3]])
         L.append(j)
         d.append([current.iloc[j][0], current.iloc[j][1], current.iloc[j][2], current.iloc[j][3]])
-print np.array(X)
 data = np.array(d)
 
 
@@ -112,8 +110,8 @@ def get_stat(data, centroid, label, K):
     
     SC = np.sum(S)/len(S)
     # print S, len(S)
-    print 'WC_SSD:', '%.2f' % WC_SSD
-    print 'SC:', '%.2f' % SC
+    # print 'WC_SSD:', '%.2f' % WC_SSD
+    # print 'SC:', '%.2f' % SC
     return WC_SSD, SC
 
 def get_centroid(label, k):
@@ -149,7 +147,7 @@ SC_complete = []
 SC_average = []
 
 for k in K:
-    print 'K:', k
+    # print 'K:', k
     # single
     label_single = scipy.cluster.hierarchy.fcluster(Z_single, k, criterion='maxclust')
     centroid = get_centroid(label_single, k)
@@ -277,7 +275,6 @@ print 'average K:', 8
 label_average = scipy.cluster.hierarchy.fcluster(Z_average, 8, criterion='maxclust')
 centroid = get_centroid(label_average, 8)
 NMI_single = get_nmi(data, centroid, label_average, 8)
-
 
 # In[ ]:
 

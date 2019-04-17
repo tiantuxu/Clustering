@@ -13,7 +13,7 @@ from scipy.stats import ttest_ind_from_stats
 from scipy.spatial import distance
 import random
 import matplotlib
-#matplotlib.use('Agg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
@@ -80,8 +80,6 @@ def kmeans(data, K, seed):
             if label_count[i] > 0:
                 centroid[i] = (1.0 * x[i]/label_count[i], 1.0 * y[i]/label_count[i])
         
-        print count, update
-    
     return label, centroid
 
 
@@ -108,8 +106,8 @@ def get_stat(data, centroid, label, K):
         S.append((SC_B-SC_A)/max(SC_A, SC_B))
         count += 1
     SC = np.sum(S)/len(S)
-    print 'WC_SSD:', '%.2f' % WC_SSD
-    print 'SC:', '%.2f' % SC
+    # print 'WC_SSD:', '%.2f' % WC_SSD
+    # print 'SC:', '%.2f' % SC
     return WC_SSD, SC
 
 
@@ -142,7 +140,7 @@ for k in K:
     SC_2[k] = []
     SC_3[k] = []
     for s in range(10):
-        print "K =", k
+        # print "K =", k
         # Dataset 1
         label_1, centroid_1 = kmeans(data1, k, s)
         WC_SSD, SC = get_stat(data1, centroid_1, label_1, k)
