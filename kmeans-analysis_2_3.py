@@ -62,24 +62,24 @@ def kmeans(data, K, seed):
             x[l] += row[2]
             y[l] += row[3]
             label_count[l] += 1
-            
+
             # Check if there's an update in each round
             if l != label[idx]:
                 label[idx] = l
                 update += 1
-            
+
             idx += 1
-                
+
         count += 1
-        
+
         if count == 50 or update == 0:
             break
-        
+
         # Update the centroid if they does not meet the stop criterion
         for i in range(len(centroid)):
             if label_count[i] > 0:
                 centroid[i] = (1.0 * x[i]/label_count[i], 1.0 * y[i]/label_count[i])
-        
+
     return label, centroid
 
 
@@ -156,13 +156,13 @@ for k in K:
         WC_SSD, SC = get_stat(data3, centroid_3, label_3, k)
         WC_SSD_3[k].append(WC_SSD)
         SC_3[k].append(SC)
-    
-print WC_SSD_1
-print SC_1
-print WC_SSD_2
-print SC_2
-print WC_SSD_3
-print SC_3
+
+# print WC_SSD_1
+# print SC_1
+# print WC_SSD_2
+# print SC_2
+# print WC_SSD_3
+# print SC_3
 
 
 # In[35]:
@@ -176,7 +176,7 @@ WC_SSD_1_mean = []
 WC_SSD_1_stdrr = []
 for k in K:
     WC_SSD_1_mean.append(np.mean(WC_SSD_1[k], axis = 0))
-    WC_SSD_1_stdrr.append(np.std(WC_SSD_1[k], axis = 0)/np.sqrt(10))   
+    WC_SSD_1_stdrr.append(np.std(WC_SSD_1[k], axis = 0)/np.sqrt(10))
 #axarr[0, 0].plot(K, WC_SSD_1_mean, marker='.',color = 'b')
 axarr[0, 0].errorbar(K, WC_SSD_1_mean, WC_SSD_1_stdrr, color = 'b', **linestyle)
 axarr[0, 0].set_title('WC_SSD: Dataset 1')
